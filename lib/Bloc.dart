@@ -18,8 +18,13 @@ class BlocManager with ChangeNotifier {
 
   List<AutocompletePrediction> mPredictions = [];
 
+<<<<<<< HEAD
 
   GooglePlace googlePlace = GooglePlace(apiKey);
+=======
+  String apiKey = "";
+  GooglePlace googlePlace = GooglePlace("");
+>>>>>>> 487c1416b464aa979503887097a9b4c809e7c978
 
   void get_current_location()async{
     var geolocator = Geolocator();
