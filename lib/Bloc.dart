@@ -3,6 +3,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_place/google_place.dart';
 
+import 'api_keys.dart';
+
 class BlocManager with ChangeNotifier {
   BlocManager(){
     get_current_location();
@@ -16,8 +18,8 @@ class BlocManager with ChangeNotifier {
 
   List<AutocompletePrediction> mPredictions = [];
 
-  String apiKey = "AIzaSyCyXdhDMhK1r43Ow2qEj1VnAPlgw-EMq5g";
-  GooglePlace googlePlace = GooglePlace("AIzaSyCyXdhDMhK1r43Ow2qEj1VnAPlgw-EMq5g");
+
+  GooglePlace googlePlace = GooglePlace(apiKey);
 
   void get_current_location()async{
     var geolocator = Geolocator();
@@ -38,7 +40,7 @@ class BlocManager with ChangeNotifier {
         location: LatLon(mPosition.longitude, mPosition.latitude)
     );
     var result3 = await googlePlace.search.getNearBySearch(
-      Location(lat: mPosition.latitude, lng: mPosition.longitude), 150000,
+      Location(lat: mPosition.latitude, lng: mPosition.longitude), 15000,
       type: "restaurant", keyword: value,
     );
     //result.results result.predictions
